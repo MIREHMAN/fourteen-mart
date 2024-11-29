@@ -1,4 +1,6 @@
+import React from 'react';
 import StoresCard from '../components/StoresCard/StoresCard';
+import Menu from '../components/Menu/Menu';
 
 function stores() {
   const stores = [
@@ -28,12 +30,17 @@ function stores() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">Stores</h1>
-      <div className="flex flex-wrap justify-center mb-4">
-        {stores.map((store) => (
-          <StoresCard key={store.id} store={store} />
-        ))}
+    <div className="max-w-7xl mx-auto px-4 py-8 flex">
+      <div className="w-2/3 p-4">
+        <h1 className="text-3xl font-bold mb-4">Stores</h1>
+        <div className="flex flex-wrap justify-center mb-4">
+          {stores.map((store) => (
+            <StoresCard key={store.id} store={store} />
+          ))}
+        </div>
+      </div>
+      <div className="w-1/3 p-4">
+        <Menu />
       </div>
     </div>
   );
