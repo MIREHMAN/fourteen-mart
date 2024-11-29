@@ -1,4 +1,7 @@
 import Carousel from "./components/Carousel/Carousel";
+import HotProductsCard from "./components/HotProductsCard/HotProductsCard";
+import OfferCard from "./components/OfferCard/OfferCard";
+import ProductCard from './components/ProductCard/ProductCard';
 
 function Home() {
   const images = [
@@ -18,39 +21,117 @@ function Home() {
       alt: "Banner 3",
     },
   ];
+
+  const hotProducts = [
+    {
+      id: 1,
+      rating: 4.5,
+      image: "/watch1.jpg",
+      title: "Product 1",
+      price: 1000,
+    },
+    {
+      id: 2,
+      rating: 4.2,
+      image: "/camera.png",
+      title: "Product 2",
+      price: 500,
+    },
+    {
+      id: 3,
+      rating: 4.8,
+      image: "/watch1.jpg",
+      title: "Product 3",
+      price: 2000,
+    },
+    {
+      id: 4,
+      rating: 4.3,
+      image: "/camera.png",
+      title: "Product 4",
+      price: 1800,
+    },
+  ];
+  const offers = [
+    {
+      id: 1,
+      title: "Offer 1",
+      offer: "Get 10% off on your first purchase",
+      image: "/camera.png",
+      ctaText: "Shop Now",
+      ctaLink: "/products",
+    },
+    
+     
+  ];
+
+  const bestSellers = [
+    {
+      id: 1,
+      title: "Product 1",
+      price: 1000,
+      rating: 4.5,
+      image: "/watch1.jpg",
+    },
+    {
+      id: 2,
+      title: "Product 2",
+      price: 500,
+      rating: 4.2,
+      image: "/watch1.jpg",
+    },
+    {
+      id: 3,
+      title: "Product 3",
+      price: 2000,
+      rating: 4.8,
+      image: "/watch1.jpg",
+    },
+  ];
+  
   return (
     <div className="w-full mx-auto">
       <Carousel items={images} />
-      <h2 className="text-3xl font-bold mb-4 text-center">Welcome to Fourteen Mart</h2>
-      <p className="text-lg text-gray-600 mb-8 text-center">
-        Your one-stop shop for all your needs.
-      </p>
-      <div className="flex flex-wrap justify-center mb-8">
-        <div className="w-full md:w-1/3 xl:w-1/4 p-4">
-          <h3 className="text-lg font-bold mb-2">Shop by Category</h3>
-          <ul className="text-sm">
-            <li className="mb-2">Electronics</li>
-            <li className="mb-2">Fashion</li>
-            <li className="mb-2">Home & Kitchen</li>
-          </ul>
-        </div>
-        <div className="w-full md:w-1/3 xl:w-1/4 p-4">
-          <h3 className="text-lg font-bold mb-2">Popular Products</h3>
-          <ul className="text-sm">
-            <li className="mb-2">Product 1</li>
-            <li className="mb-2">Product 2</li>
-            <li className="mb-2">Product 3</li>
-          </ul>
-        </div>
-        <div className="w-full md:w-1/3 xl:w-1/4 p-4">
-          <h3 className="text-lg font-bold mb-2">Why Choose Us</h3>
-          <ul className="text-sm">
-            <li className="mb-2">Free Shipping</li>
-            <li className="mb-2">Best Prices</li>
-            <li className="mb-2">Excellent Customer Service</li>
-          </ul>
-        </div>
+      <h2 className="text-3xl font-bold mb-4 text-center">Hot Products</h2>
+      <div className="flex flex-wrap justify-center gap-4">
+        {hotProducts.map((product) => (
+          <HotProductsCard
+            key={product.id}
+            rating={product.rating}
+            image={product.image}
+            title={product.title}
+            price={product.price}
+          />
+        ))}
       </div>
+  
+      
+      <div className="flex flex-wrap justify-center gap-4 mt-8">
+        {offers.map((offer) => (
+          <OfferCard
+            key={offer.id}
+            title={offer.title}
+            offer={offer.offer}
+            image={offer.image}
+            ctaText={offer.ctaText}
+            ctaLink={offer.ctaLink}
+          />
+        ))}
+      </div>
+
+      <h2 className="text-3xl font-bold mb-4 text-center">Best Sellers</h2>
+      <div className="flex flex-wrap justify-center gap-4">
+        {bestSellers.map((product) => (
+          <ProductCard
+            key={product.id}
+            title={product.title}
+            price={product.price}
+            rating={product.rating}
+            image={product.image}
+          />
+        ))}
+      </div>
+
     </div>
   );
 }
