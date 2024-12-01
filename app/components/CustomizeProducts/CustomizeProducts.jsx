@@ -13,7 +13,7 @@ const CustomizeProducts = () => {
             {option.choices.map((choice) => (
               <li
                 className={`ring-1 ring-lama text-lama rounded-md py-1 px-4 text-sm ${
-                  choice === "Red" ? "bg-lama text-white" : ""
+                  choice === "Red" ? "bg-red-600 text-white" : ""
                 }`}
                 key={choice}
               >

@@ -1,7 +1,7 @@
 import Carousel from "./components/Carousel/Carousel";
 import HotProductsCard from "./components/HotProductsCard/HotProductsCard";
 import OfferCard from "./components/OfferCard/OfferCard";
-import TopProducts from "./sections/TopProducts"
+import TopProducts from "./sections/ProductsList"
 
 function Home() {
   const images = [

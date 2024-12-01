@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/page.jsx", "app/components/CustomizeProducts/CustomizeProducts.jsx", "app/components/ProductImages/ProductImages.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/page.jsx", "app/components/CustomizeProducts/CustomizeProducts.jsx", "app/components/ProductImages/ProductImages.jsx", "app/components/Add/Add.jsx"],
   "exclude": ["node_modules"]
 }

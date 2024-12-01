@@ -1,7 +1,8 @@
 import React from 'react';
+import Add from "../components/Add/Add";
 import CustomizeProducts from "../components/CustomizeProducts/CustomizeProducts";
 import ProductImages from "../components/ProductImages/ProductImages";
-
+import Reviews from "../components/Reviews/Reviews";
 
 const product = {
   name: "Product Name",
@@ -16,6 +17,16 @@ const product = {
   price: {
     price: 400,
   },
+  options: [
+    {
+      name: "Color",
+      choices: ["Red", "Blue", "Green"],
+    },
+    {
+      name: "Size",
+      choices: ["Small", "Medium", "Large"],
+    },
+  ],
 };
 
 const sections = [
@@ -47,9 +58,21 @@ const Test = () => {
           <h2 className="font-medium text-2xl">$400</h2>
         </div>
         <div className="h-[2px] bg-gray-100" />
+        {/* Options */}
+        {product.options.map((option) => (
+          <div className="flex flex-col gap-4" key={option.name}>
+            <h4 className="font-medium text-lg">{option.name}</h4>
+            <ul className="flex items-center gap-3">
+              {option.choices.map((choice) => (
+                <li key={choice}>{choice}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
         {/* Customize or Add to Cart */}
         <CustomizeProducts />
         <div className="h-[2px] bg-gray-100" />
+        <Add/>
         {/* Additional Info */}
         {sections.map((section) => (
           <div className="text-sm" key={section.title}>
@@ -60,7 +83,7 @@ const Test = () => {
         <div className="h-[2px] bg-gray-100" />
         {/* Reviews */}
         <h1 className="text-2xl">User Reviews</h1>
-        
+        <Reviews/>
       </div>
     </div>
   );
