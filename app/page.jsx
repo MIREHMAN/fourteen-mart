@@ -1,7 +1,7 @@
 import Carousel from "./components/Carousel/Carousel";
 import HotProductsCard from "./components/HotProductsCard/HotProductsCard";
 import OfferCard from "./components/OfferCard/OfferCard";
-import ProductCard from './components/ProductCard/ProductCard';
+import TopProducts from "./sections/TopProducts"
 
 function Home() {
   const images = [
@@ -65,29 +65,7 @@ function Home() {
      
   ];
 
-  const bestSellers = [
-    {
-      id: 1,
-      title: "Product 1",
-      price: 1000,
-      rating: 4.5,
-      image: "/watch1.jpg",
-    },
-    {
-      id: 2,
-      title: "Product 2",
-      price: 500,
-      rating: 4.2,
-      image: "/watch1.jpg",
-    },
-    {
-      id: 3,
-      title: "Product 3",
-      price: 2000,
-      rating: 4.8,
-      image: "/watch1.jpg",
-    },
-  ];
+ 
   
   return (
     <div className="w-full mx-auto">
@@ -105,7 +83,8 @@ function Home() {
         ))}
       </div>
   
-      
+      <TopProducts/>
+
       <div className="flex flex-wrap justify-center gap-4 mt-8">
         {offers.map((offer) => (
           <OfferCard
@@ -119,19 +98,9 @@ function Home() {
         ))}
       </div>
 
-      <h2 className="text-3xl font-bold mb-4 text-center">Best Sellers</h2>
-      <div className="flex flex-wrap justify-center gap-4">
-        {bestSellers.map((product) => (
-          <ProductCard
-            key={product.id}
-            title={product.title}
-            price={product.price}
-            rating={product.rating}
-            image={product.image}
-          />
-        ))}
-      </div>
+      <TopProducts/>
 
+    
     </div>
   );
 }
