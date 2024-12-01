@@ -62,6 +62,14 @@ function Home() {
       ctaText: "Shop Now",
       ctaLink: "/products",
     },
+    {
+      id: 2,
+      title: "Offer 2",
+      offer: "Get 15% off on your Cameras",
+      image: "/camera.png",
+      ctaText: "Shop Now",
+      ctaLink: "/products",
+    },
     
      
   ];
@@ -87,7 +95,7 @@ function Home() {
       <ProductsList/>
 
       <div className="flex flex-wrap justify-center gap-4 mt-8">
-        {offers.map((offer) => (
+        {offers.slice(0,1).map((offer) => (
           <OfferCard
             key={offer.id}
             title={offer.title}
@@ -103,6 +111,22 @@ function Home() {
 
       <h2 className="text-3xl font-bold mb-4 text-center mt-8">Shop By Categories</h2>
         <CategoryList/>
+
+        <div className="flex flex-wrap justify-center gap-4 mt-8">
+        {offers.slice(1,2).map((offer) => (
+          <OfferCard
+            key={offer.id}
+            title={offer.title}
+            offer={offer.offer}
+            image={offer.image}
+            ctaText={offer.ctaText}
+            ctaLink={offer.ctaLink}
+          />
+        ))}
+      </div>
+
+      <h2 className="text-3xl font-bold mb-4 text-center mt-8">For You</h2>
+      <ProductsList/>
     
     </div>
   );
