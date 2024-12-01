@@ -1,7 +1,8 @@
 import Carousel from "./components/Carousel/Carousel";
 import HotProductsCard from "./components/HotProductsCard/HotProductsCard";
 import OfferCard from "./components/OfferCard/OfferCard";
-import TopProducts from "./sections/ProductsList"
+import ProductsList from "./sections/ProductsList/ProductsList";
+import CategoryList from "./sections/CategoryList/CategoryList";
 
 function Home() {
   const images = [
@@ -70,7 +71,7 @@ function Home() {
   return (
     <div className="w-full mx-auto">
       <Carousel items={images} />
-      <h2 className="text-3xl font-bold mb-4 text-center">Hot Products</h2>
+      <h2 className="text-3xl font-bold mb-4 text-center mt-8">Hot Sales</h2>
       <div className="flex flex-wrap justify-center gap-4">
         {hotProducts.map((product) => (
           <HotProductsCard
@@ -82,8 +83,8 @@ function Home() {
           />
         ))}
       </div>
-  
-      <TopProducts/>
+      <h2 className="text-3xl font-bold mb-4 text-center mt-8">New Arrival</h2>
+      <ProductsList/>
 
       <div className="flex flex-wrap justify-center gap-4 mt-8">
         {offers.map((offer) => (
@@ -97,9 +98,11 @@ function Home() {
           />
         ))}
       </div>
+      <h2 className="text-3xl font-bold mb-4 text-center mt-8">Flash Sales</h2>
+      <ProductsList/>
 
-      <TopProducts/>
-
+      <h2 className="text-3xl font-bold mb-4 text-center mt-8">Shop By Categories</h2>
+        <CategoryList/>
     
     </div>
   );

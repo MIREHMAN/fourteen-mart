@@ -1,4 +1,4 @@
-import ProductCard from '../components/ProductCard/ProductCard';
+import ProductCard from '../../components/ProductCard/ProductCard';
 
 const Products = [
   {
@@ -31,11 +31,11 @@ const Products = [
   },
 ];
 
-const TopProducts = () => {
+const ProductsList = () => {
   return (
     <div className='mt-12'>
-      <h2 className="text-3xl font-bold mb-4 text-center">Top Products</h2>
-      <div className="flex flex-wrap justify-center gap-4 mt-8">
+      
+      <div className="flex flex-wrap justify-center gap-8 mt-8">
         {Products.map((product) => (
           <ProductCard
             key={product.id}
@@ -50,4 +50,4 @@ const TopProducts = () => {
   );
 };
 
-export default TopProducts;
+export default ProductsList;
