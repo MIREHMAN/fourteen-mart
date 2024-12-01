@@ -1,7 +1,7 @@
 import Link from 'next/link';
+import Search from "../Search/Search"
 
-
-const pages = ['Home', 'Products', 'Stores', 'About'];
+const pages = ['Home', 'Products', 'Stores', 'About', 'Login'];
 
 function Navbar() {
   return (
@@ -23,6 +23,7 @@ function Navbar() {
           ))}
         </div>
         <div className="flex items-center space-x-4">
+          <Search/>
           
         </div>
       </div>
