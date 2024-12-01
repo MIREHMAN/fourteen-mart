@@ -7,7 +7,7 @@ const MenuPost = async () => {
       title: 'Product 1',
       price: 1000,
       rating: 4.5,
-      image: '/product1.jpg',
+      image: '/watch1.jpg',
       category: 'Electronics',
     },
     {
@@ -15,7 +15,7 @@ const MenuPost = async () => {
       title: 'Product 2',
       price: 500,
       rating: 4.2,
-      image: '/product2.jpg',
+      image: '/watch1.jpg',
       category: 'Fashion',
     },
     {
@@ -23,7 +23,7 @@ const MenuPost = async () => {
       title: 'Product 3',
       price: 2000,
       rating: 4.8,
-      image: '/product3.jpg',
+      image: '/watch1.jpg',
       category: 'Home & Kitchen',
     },
     {
@@ -31,7 +31,7 @@ const MenuPost = async () => {
       title: 'Product 4',
       price: 1500,
       rating: 4.1,
-      image: '/product4.jpg',
+      image: '/watch1.jpg',
       category: 'Beauty & Personal Care',
     },
   ];

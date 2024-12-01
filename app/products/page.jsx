@@ -1,6 +1,7 @@
 import React from 'react';
 import Menu from '../components/Menu/Menu';
 import ProductCard from '../components/ProductCard/ProductCard';
+import Filter from '../components/Filter/Filter';
 
 const products = () => {
   const posts = [
@@ -40,8 +41,11 @@ const products = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 flex">
+       
       <div className="w-2/3 p-4">
+      <Filter/>
         <h1 className="text-3xl font-bold mb-4">Products</h1>
+       
         <div className="flex flex-wrap gap-4">
           {posts.map((post) => (
             <ProductCard
