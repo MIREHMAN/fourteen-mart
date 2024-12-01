@@ -1,47 +1,69 @@
-import React from 'react'
 import React from 'react';
-import Menu from "@/components/Menu/Menu";
-import Image from "next/image";
-import Comments from "../../../components/comments/Comments";
+import CustomizeProducts from "../components/CustomizeProducts/CustomizeProducts";
+import ProductImages from "../components/ProductImages/ProductImages";
 
-const test = () => {
+
+const product = {
+  name: "Product Name",
+  description: "Product Description",
+  media: {
+    items: [
+      {
+        url: "https://via.placeholder.com/500",
+      },
+    ],
+  },
+  price: {
+    price: 400,
+  },
+};
+
+const sections = [
+  {
+    title: "Section 1",
+    description: "Section 1 description",
+  },
+  {
+    title: "Section 2",
+    description: "Section 2 description",
+  },
+];
+
+const Test = () => {
   return (
-    <div className="max-w-7xl mx-auto md:p-8 flex md:flex-row">
-      <div className="mt-12 w-full flex-2 justify-start md:basis-[80%] basis-full">
-        <h1 className="text-6xl md:text-5xl lg:text-6xl mb-12">
-          Product Title
-        </h1>
-        <div className="flex items-center gap-5 mb-12">
-          <div className="w-12 h-12 relative">
-            <Image
-              src="https://via.placeholder.com/100"
-              alt=""
-              fill
-              className="rounded-full object-cover"
-            />
-          </div>
-          <div className="flex flex-col gap-1 text-gray-400">
-            <span className="text-lg font-medium">Brand Name</span>
-            <span className="text-base font-light">
-              Posted on: 12.12.2022
-            </span>
-          </div>
-        </div>
-        <div className="hidden md:block h-80 relative mb-12">
-          <Image src="https://via.placeholder.com/500" alt="" fill className="object-cover" />
-        </div>
-        <div className="description text-lg font-light mb-5">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.
-        </div>
-        <Comments />
+    <div className="container mx-auto p-4 md:p-8 lg:p-16 xl:p-32 2xl:p-64 relative flex flex-col lg:flex-row gap-16">
+      {/* Product Images */}
+      <div className="w-full lg:w-1/2 lg:sticky top-20 h-max">
+        <ProductImages items={product.media?.items} />
       </div>
-      <div className="flex-1 basis-1/4 md:block hidden">
-        <Menu />
+      {/* Product Details */}
+      <div className="w-full lg:w-1/2 flex flex-col gap-6">
+        <h1 className="text-4xl font-medium">{product.name}</h1>
+        <p className="text-gray-500">{product.description}</p>
+        <div className="h-[2px] bg-gray-100" />
+        {/* Price */}
+        <div className="flex items-center gap-4">
+          <h3 className="text-xl text-gray-500 line-through">$500</h3>
+          <h2 className="font-medium text-2xl">$400</h2>
+        </div>
+        <div className="h-[2px] bg-gray-100" />
+        {/* Customize or Add to Cart */}
+        <CustomizeProducts />
+        <div className="h-[2px] bg-gray-100" />
+        {/* Additional Info */}
+        {sections.map((section) => (
+          <div className="text-sm" key={section.title}>
+            <h4 className="font-medium mb-4">{section.title}</h4>
+            <p>{section.description}</p>
+          </div>
+        ))}
+        <div className="h-[2px] bg-gray-100" />
+        {/* Reviews */}
+        <h1 className="text-2xl">User Reviews</h1>
+        
       </div>
     </div>
   );
 };
 
-
-
-export default test
+export default Test;
