@@ -16,7 +16,7 @@ const ProductCard = ({id, title, price, rating, image, originalPrice }) => {
 
   const handleBuyNow = () => {
     addToCart({ id, title, price, quantity: 1 });
-    router.push("/checkout");
+    router.push("http://localhost:3000/checkout");
   };
 
   const handleAddToCart = () => {
@@ -72,14 +72,14 @@ const ProductCard = ({id, title, price, rating, image, originalPrice }) => {
       </div>
       <div className="px-4 ">
         <div className="flex justify-between gap-2">
-          <Link href="#" className="flex-1">
+          
             <button
               onClick={handleBuyNow}
               className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold transition-all duration-300 hover:bg-blue-700 focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
             >
               Buy Now
             </button>
-          </Link>
+         
           <button
             onClick={handleAddToCart}
             className="bg-gray-100 text-gray-600 p-2 rounded-lg transition-all duration-300 hover:bg-gray-200 focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"

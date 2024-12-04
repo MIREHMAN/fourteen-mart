@@ -12,7 +12,7 @@ export default function Checkout() {
     email: '',
     address: '',
     city: '',
-    zipCode: '',
+    contact: '',
   })
 
   const handleInputChange = (e) => {
@@ -46,7 +46,7 @@ export default function Checkout() {
                 value={formData.name}
                 onChange={handleInputChange}
                 required
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                className="mt-1 py-2 block w-full rounded-md border-gray-600 shadow-md focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
               />
             </div>
             <div className="mb-4">
@@ -58,7 +58,19 @@ export default function Checkout() {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                className="mt-1 py-2 block w-full rounded-md border-gray-600 shadow-md focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="contact" className="block text-sm font-medium text-gray-700">Contact Number</label>
+              <input
+                type="text"
+                id="contact"
+                name="contact"
+                value={formData.contact}
+                onChange={handleInputChange}
+                required
+                className="mt-1 py-2 block w-full rounded-md border-gray-600 shadow-md focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
               />
             </div>
             <div className="mb-4">
@@ -70,7 +82,7 @@ export default function Checkout() {
                 value={formData.address}
                 onChange={handleInputChange}
                 required
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                className="mt-1 py-2 block w-full rounded-md border-gray-600 shadow-md focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
               />
             </div>
             <div className="mb-4">
@@ -82,21 +94,10 @@ export default function Checkout() {
                 value={formData.city}
                 onChange={handleInputChange}
                 required
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                className="mt-1 py-2 block w-full rounded-md border-gray-600 shadow-md focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
               />
             </div>
-            <div className="mb-4">
-              <label htmlFor="zipCode" className="block text-sm font-medium text-gray-700">ZIP Code</label>
-              <input
-                type="text"
-                id="zipCode"
-                name="zipCode"
-                value={formData.zipCode}
-                onChange={handleInputChange}
-                required
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-              />
-            </div>
+           
             <button
               type="submit"
               className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold transition-all duration-300 hover:bg-blue-700 focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
