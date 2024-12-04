@@ -4,62 +4,59 @@ import ProductCard from '../components/ProductCard/ProductCard';
 import Filter from '../components/Filter/Filter';
 
 const products = () => {
-  const posts = [
+  const Items = [
     {
-      id: 1,
-      title: 'Product 1',
-      price: 1000,
+      id:1,
+      title: "Premium Wireless Headphones",
+      price: 15999,
       rating: 4.5,
-      image: '/watch1.jpg',
-      category: 'Electronics',
+      image: "/headphone.png",
+      originalPrice: 17999
     },
     {
-      id: 2,
-      title: 'Product 2',
-      price: 500,
+      id:2,
+      title: "Smart Fitness Tracker Watch",
+      price: 8999,
       rating: 4.2,
-      image: '/watch1.jpg',
-      category: 'Fashion',
+      image: "/watch1.jpg",
+      originalPrice: 9999
     },
     {
-      id: 3,
-      title: 'Product 3',
-      price: 2000,
+      id:3,
+      title: "Ultra HD 4K Smart TV - 55 inch",
+      price: 54999,
       rating: 4.8,
-      image: '/watch1.jpg',
-      category: 'Home & Kitchen',
+      image: "/LED.png",
+      originalPrice: 59999
     },
     {
-      id: 4,
-      title: 'Product 4',
-      price: 1500,
-      rating: 4.1,
-      image: '/watch1.jpg',
-      category: 'Beauty & Personal Care',
-    },
-  ];
+      id:4,
+      title: "Ultra HD 4K 28 Zoom Camera",
+      price: 84999,
+      rating: 4.8,
+      image: "/camera.png",
+      originalPrice: 99999
+    }
+  ]
+  
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8 flex">
-       
-      <div className="w-2/3 p-4">
+    <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col">
+    <div className="w-full">
       <Filter/>
+    </div>
+    <div className="max-w-7xl mx-auto px-4 py-8 flex">
+      <div className="w-full">
         <h1 className="text-3xl font-bold mb-4">Products</h1>
-       
         <div className="flex flex-wrap gap-4">
-          {posts.map((post) => (
-            <ProductCard
-              key={post.id}
-              title={post.title}
-              price={post.price}
-              rating={post.rating}
-              image={post.image}
-            />
-          ))}
+        {Items.map((product, index) => (
+          <ProductCard key={index} {...product} />
+        ))}
+       </div>
         </div>
-      </div>
-      <div className="w-1/3 p-4">
-        <Menu />
+        <div className="w-1/3 p-4">
+          <Menu />
+        </div>
       </div>
     </div>
   );
