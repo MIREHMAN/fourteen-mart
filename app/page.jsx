@@ -1,8 +1,8 @@
 import Carousel from "./components/Carousel/Carousel";
-import HotProductsCard from "./components/HotProductsCard/HotProductsCard";
 import OfferCard from "./components/OfferCard/OfferCard";
 import ProductsList from "./sections/ProductsList/ProductsList";
 import CategoryList from "./sections/CategoryList/CategoryList";
+import HotProductList from "./sections/HotProductList/HotProductList";
 
 function Home() {
   const images = [
@@ -23,36 +23,7 @@ function Home() {
     },
   ];
 
-  const hotProducts = [
-    {
-      id: 1,
-      rating: 4.5,
-      image: "/watch1.jpg",
-      title: "Product 1",
-      price: 1000,
-    },
-    {
-      id: 2,
-      rating: 4.2,
-      image: "/camera.png",
-      title: "Product 2",
-      price: 500,
-    },
-    {
-      id: 3,
-      rating: 4.8,
-      image: "/watch1.jpg",
-      title: "Product 3",
-      price: 2000,
-    },
-    {
-      id: 4,
-      rating: 4.3,
-      image: "/camera.png",
-      title: "Product 4",
-      price: 1800,
-    },
-  ];
+  
   const offers = [
     {
       id: 1,
@@ -79,18 +50,7 @@ function Home() {
   return (
     <div className="w-full mx-auto">
       <Carousel items={images} />
-      <h2 className="text-3xl font-bold mb-4 text-center mt-8">Hot Sales</h2>
-      <div className="flex flex-wrap justify-center gap-4">
-        {hotProducts.map((product) => (
-          <HotProductsCard
-            key={product.id}
-            rating={product.rating}
-            image={product.image}
-            title={product.title}
-            price={product.price}
-          />
-        ))}
-      </div>
+     <HotProductList/>
       <h2 className="text-3xl font-bold mb-4 text-center mt-8">New Arrival</h2>
       <ProductsList/>
 
@@ -109,7 +69,7 @@ function Home() {
       <h2 className="text-3xl font-bold mb-4 text-center mt-8">Flash Sales</h2>
       <ProductsList/>
 
-      <h2 className="text-3xl font-bold mb-4 text-center mt-8">Shop By Categories</h2>
+   
         <CategoryList/>
 
         <div className="flex flex-wrap justify-center gap-4 mt-8">

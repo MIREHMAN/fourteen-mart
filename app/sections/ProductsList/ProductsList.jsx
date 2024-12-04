@@ -5,7 +5,7 @@ const Products = [
     title: "Premium Wireless Headphones",
     price: 15999,
     rating: 4.5,
-    image: "/watch1.jpg",
+    image: "/headphone.png",
     originalPrice: 17999
   },
   {
@@ -19,7 +19,7 @@ const Products = [
     title: "Ultra HD 4K Smart TV - 55 inch",
     price: 54999,
     rating: 4.8,
-    image: "/placeholder.svg?height=160&width=256",
+    image: "/LED.png",
     originalPrice: 59999
   },
   {

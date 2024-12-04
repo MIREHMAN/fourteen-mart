@@ -1,9 +1,28 @@
+"use client"
+
 import Image from "next/image";
 import Link from "next/link";
-import { AiFillStar, AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
+import { useCart } from '../../contexts/CartContext';
+import { useRouter } from "next/navigation";
+import {
+  AiFillStar,
+  AiOutlineShoppingCart,
+  AiOutlineHeart,
+} from "react-icons/ai";
 
+const ProductCard = ({id, title, price, rating, image, originalPrice }) => {
+  const { addToCart } = useCart();
+  const router = useRouter();
 
-const ProductCard = ({ title, price, rating, image, originalPrice }) => {
+  const handleBuyNow = () => {
+    addToCart({ id, title, price, quantity: 1 });
+    router.push("/checkout");
+  };
+
+  const handleAddToCart = () => {
+    addToCart({ id, title, price, quantity: 1 });
+  };
+
   return (
     <div className="bg-white shadow-lg rounded-xl w-64 h-[400px] overflow-hidden transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 cursor-pointer">
       <div className="relative">
@@ -32,7 +51,9 @@ const ProductCard = ({ title, price, rating, image, originalPrice }) => {
           </span>
           <div className="flex items-center bg-yellow-100 px-2 py-1 rounded-full">
             <AiFillStar className="mr-1 text-yellow-500" />
-            <span className="text-xs font-semibold text-yellow-700">{rating}</span>
+            <span className="text-xs font-semibold text-yellow-700">
+              {rating}
+            </span>
           </div>
         </div>
         <Link href="#">
@@ -52,11 +73,17 @@ const ProductCard = ({ title, price, rating, image, originalPrice }) => {
       <div className="px-4 ">
         <div className="flex justify-between gap-2">
           <Link href="#" className="flex-1">
-            <button className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold transition-all duration-300 hover:bg-blue-700 focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+            <button
+              onClick={handleBuyNow}
+              className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold transition-all duration-300 hover:bg-blue-700 focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
+            >
               Buy Now
             </button>
           </Link>
-          <button className="bg-gray-100 text-gray-600 p-2 rounded-lg transition-all duration-300 hover:bg-gray-200 focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50">
+          <button
+            onClick={handleAddToCart}
+            className="bg-gray-100 text-gray-600 p-2 rounded-lg transition-all duration-300 hover:bg-gray-200 focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
+          >
             <AiOutlineShoppingCart className="w-6 h-6" />
           </button>
         </div>
@@ -66,4 +93,3 @@ const ProductCard = ({ title, price, rating, image, originalPrice }) => {
 };
 
 export default ProductCard;
-
