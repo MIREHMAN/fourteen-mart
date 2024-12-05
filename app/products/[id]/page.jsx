@@ -43,18 +43,48 @@ const SinglePage = async ({ params }) => {
         </div>
         <div className="h-[2px] bg-gray-100" />
         {/* Options */}
-        {product.options.map((option) => (
+        {product.options.map((option, index) => (
           <div className="flex flex-col gap-4" key={option.name}>
             <h4 className="font-medium text-lg">{option.name}</h4>
-            <ul className="flex items-center gap-3">
-              {option.choices.map((choice) => (
-                <li key={choice}>{choice}</li>
-              ))}
-            </ul>
+            {index === 0 && (
+              <div className="flex items-center gap-3">
+                {option.choices.map((choice) => (
+                  <button
+                    key={choice}
+                    className={`h-12 w-12 px-4 rounded-full ${
+                      choice === "Red"
+                        ? "bg-red-500 text-white"
+                        : choice === "Blue"
+                        ? "bg-blue-500 text-white"
+                        : "bg-green-500 text-white"
+                    }`}
+                  >
+                    
+                  </button>
+                ))}
+              </div>
+            )}
+            {index === 1 && (
+              <div className="flex items-center gap-3">
+                {option.choices.map((choice) => (
+                  <button
+                    key={choice}
+                    className={`py-2 px-4 rounded-md shadow-md ${
+                      choice === "Small"
+                        ? "text-xs"
+                        : choice === "Medium"
+                        ? "text-sm"
+                        : "text-base"
+                    }`}
+                  >
+                    {choice}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         ))}
-        {/* Customize or Add to Cart */}
-        <CustomizeProducts />
+       
         <div className="h-[2px] bg-gray-100" />
         <Add />
 
