@@ -1,8 +1,8 @@
 import React from 'react';
-import Add from "../components/Add/Add";
-import CustomizeProducts from "../components/CustomizeProducts/CustomizeProducts";
-import ProductImages from "../components/ProductImages/ProductImages";
-import Reviews from "../components/Reviews/Reviews";
+import Add from "../../components/Add/Add";
+import CustomizeProducts from "../../components/CustomizeProducts/CustomizeProducts";
+import ProductImages from "../../components/ProductImages/ProductImages";
+import Reviews from "../../components/Reviews/Reviews";
 
 const product = {
   name: "Product Name",
@@ -40,7 +40,7 @@ const sections = [
   },
 ];
 
-const Test = () => {
+const SinglePage = () => {
   return (
     <div className="container mx-auto p-4 md:p-8 lg:p-16 xl:p-32 2xl:p-64 relative flex flex-col lg:flex-row gap-16">
       {/* Product Images */}
@@ -89,4 +89,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default SinglePage;

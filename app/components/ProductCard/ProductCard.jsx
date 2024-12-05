@@ -56,7 +56,7 @@ const ProductCard = ({id, title, price, rating, image, originalPrice }) => {
             </span>
           </div>
         </div>
-        <Link href="#">
+        <Link href="/">
           <h3 className="text-lg font-bold mb-2 text-gray-800 hover:text-blue-600 transition-colors duration-300 line-clamp-2">
             {title}
           </h3>

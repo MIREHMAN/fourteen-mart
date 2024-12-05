@@ -14,7 +14,7 @@ const MenuCategories = () => {
       {categories.map((category) => (
         <Link
           key={category.id}
-          href={`/products?cat=${category.slug}`}
+          href={`/products?cat=${category.id}`}
           className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
         >
           {category.title}
