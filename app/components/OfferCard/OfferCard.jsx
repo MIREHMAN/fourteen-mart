@@ -1,26 +1,46 @@
+"use client"
+
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 const OfferCard = ({ title, offer, image, ctaText, ctaLink }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <div className="bg-red-400 shadow-md rounded-lg w-[1130px] h-36 cursor-pointer flex">
-      <div className="w-2/3 p-4">
-        <h3 className="text-lg text-white font-bold mb-2">{title}</h3>
-        <p className="text-sm text-white mb-4">{offer}</p>
-        <Link href={ctaLink}>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-            {ctaText}
-          </button>
-        </Link>
+    <div
+      className="relative bg-gradient-to-r from-emerald-500 to-emerald-400 shadow-lg rounded-lg w-[960px] h-48 overflow-hidden transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-xl"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div
+          className={`w-full h-full bg-gradient-to-r from-emerald-600 to-emerald-500 opacity-0 transition duration-500 ease-in-out ${
+            isHovered ? "opacity-100" : ""
+          }`}
+        ></div>
       </div>
-      <div className="w-1/3 my-auto">
-        <Image
-          src={image}
-          alt={title}
-          width={140}
-          height={140}
-          className=" object-contain rounded-r-lg "
-        />
+      <div className="relative z-10 flex items-center p-6">
+        <div className="w-2/3">
+          <h3 className="text-2xl text-white font-bold mb-2">{title}</h3>
+          <p className="text-lg text-white mb-4">{offer}</p>
+          <Link href={ctaLink}>
+            <button className="px-6 py-3 bg-white text-emerald-600 font-semibold rounded-full shadow-md hover:bg-emerald-50 transition duration-300">
+              {ctaText}
+            </button>
+          </Link>
+        </div>
+        <div className="w-1/3 flex justify-end">
+          <div className="relative w-40 h-40 ">
+            <Image
+              src={image}
+              alt={title}
+              layout="fill"
+              objectFit="contain"
+              className="rounded-md drop-shadow-2xl"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
