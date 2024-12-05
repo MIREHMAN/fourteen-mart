@@ -14,20 +14,32 @@ const SinglePage = async ({ params }) => {
   const product = ProductsData.find((product) => product.id === parseInt(id));
   console.log(product);
   return (
-    <div className="container mx-auto p-4 md:p-8 lg:p-16 xl:p-32 2xl:p-64 relative flex flex-col lg:flex-row gap-16">
+    <div className="container mx-auto p-4 md:p-8 lg:p-16 xl:p-32 2xl:p-64 relative flex flex-col lg:flex-row gap-24">
       {/* Product Images */}
-      <div className="w-full lg:w-1/2 lg:sticky top-20 h-max">
-        <ProductImages media ={product.media.items} />
+      <div className="w-full lg:w-1/2 lg:sticky top-10 h-max">
+        <ProductImages media={product.media.items} />
       </div>
       {/* Product Details */}
       <div className="w-full lg:w-1/2 flex flex-col gap-6">
-        <h1 className="text-4xl font-medium">{product.title}</h1>
-        <p className="text-gray-500">Description: {product.description}</p>
+        <h1 className="text-4xl font-bold mb-2 text-gray-600">
+          {product.title}
+        </h1>
+        <p className="text-lg text-gray-600">{product.description}</p>
         <div className="h-[2px] bg-gray-100" />
         {/* Price */}
-        <div className="flex items-center gap-4">
-          <h3 className="text-xl text-gray-500 line-through">${product.originalPrice}</h3>
-          <h2 className="font-medium text-2xl">${product.price}</h2>
+        <div className="p-2">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <span className="text-4xl font-bold text-blue-600">
+                PKR.{product.price}/-
+              </span>
+              {product.originalPrice && (
+                <span className="text-lg text-gray-500 line-through">
+                  PKR.{product.originalPrice}
+                </span>
+              )}
+            </div>
+          </div>
         </div>
         <div className="h-[2px] bg-gray-100" />
         {/* Options */}
@@ -44,12 +56,12 @@ const SinglePage = async ({ params }) => {
         {/* Customize or Add to Cart */}
         <CustomizeProducts />
         <div className="h-[2px] bg-gray-100" />
-        <Add/>
-       
+        <Add />
+
         <div className="h-[2px] bg-gray-100" />
         {/* Reviews */}
         <h1 className="text-2xl">User Reviews</h1>
-        <Reviews/>
+        <Reviews />
       </div>
     </div>
   );

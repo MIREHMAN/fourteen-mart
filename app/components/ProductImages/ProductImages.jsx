@@ -3,43 +3,27 @@
 import Image from "next/image";
 import React from 'react';
 
-const images = [
-  {
-    id: 1,
-    url: "https://images.pexels.com/photos/19036832/pexels-photo-19036832/free-photo-of-mountain-reflection-in-lake.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
-  },
-  {
-    id: 2,
-    url: "https://images.pexels.com/photos/17867705/pexels-photo-17867705/free-photo-of-crowd-of-hikers-on-the-mountain-ridge-at-dusk.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
-  },
-  {
-    id: 3,
-    url: "https://images.pexels.com/photos/21812160/pexels-photo-21812160/free-photo-of-puerta-colonial-color-rojo-de-guanajuato-mexico.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
-  },
-  {
-    id: 4,
-    url: "https://images.pexels.com/photos/20832069/pexels-photo-20832069/free-photo-of-a-narrow-street-with-buildings-and-cars.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
-  },
-];
 
 const ProductImages = ({media}) => {
   const [index, setIndex] = React.useState(0);
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="h-[500px] relative">
+      <div className="h-[500px] relative  overflow-hidden">
         <Image
           src={media[index].url}
           alt=""
           fill
           sizes="50vw"
-          className="object-contain rounded-md"
+          className="object-contain "
         />
       </div>
-      <div className="flex justify-between gap-4">
+      <div className="flex justify-between gap-4 rounded-md shadow-sm">
         {media.map((image, i) => (
           <div
-            className="w-1/4 h-32 relative gap-4 cursor-pointer"
+            className={`w-1/4 h-32 relative gap-4 cursor-pointer rounded-md overflow-hidden ${
+              i === index ? 'border-2 border-blue-500' : ''
+            }`}
             key={image.index}
             onClick={() => setIndex(i)}
           >
@@ -48,7 +32,7 @@ const ProductImages = ({media}) => {
               alt=""
               fill
               sizes="30vw"
-              className="object-cover rounded-md"
+              className="object-contain rounded-md transition duration-300 ease-in-out transform hover:scale-110"
             />
           </div>
         ))}
