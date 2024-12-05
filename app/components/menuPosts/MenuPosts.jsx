@@ -3,7 +3,7 @@ import MenuPostCard from "../menuPostCard/menuPostCard";
 const MenuPost = async () => {
   const data = [
     {
-      id: 1,
+      id: 100,
       title: 'Product 1',
       price: 1000,
       rating: 4.5,
@@ -11,7 +11,7 @@ const MenuPost = async () => {
       category: 'Electronics',
     },
     {
-      id: 2,
+      id: 200,
       title: 'Product 2',
       price: 500,
       rating: 4.2,
@@ -19,7 +19,7 @@ const MenuPost = async () => {
       category: 'Fashion',
     },
     {
-      id: 3,
+      id: 300,
       title: 'Product 3',
       price: 2000,
       rating: 4.8,
@@ -27,7 +27,7 @@ const MenuPost = async () => {
       category: 'Home & Kitchen',
     },
     {
-      id: 4,
+      id: 400,
       title: 'Product 4',
       price: 1500,
       rating: 4.1,
