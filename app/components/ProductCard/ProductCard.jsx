@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCart } from '../../contexts/CartContext';
+import { useCart } from "../../contexts/CartContext";
 import { useRouter } from "next/navigation";
 import {
   AiFillStar,
@@ -10,7 +10,7 @@ import {
   AiOutlineHeart,
 } from "react-icons/ai";
 
-const ProductCard = ({id, title, price, rating, media, originalPrice }) => {
+const ProductCard = ({ id, title, price, rating, media, originalPrice }) => {
   const { addToCart } = useCart();
   const router = useRouter();
 
@@ -56,7 +56,7 @@ const ProductCard = ({id, title, price, rating, media, originalPrice }) => {
             </span>
           </div>
         </div>
-        <Link href="/">
+        <Link href={`/products/${id}`}>
           <h3 className="text-lg font-bold mb-2 text-gray-800 hover:text-blue-600 transition-colors duration-300 line-clamp-2">
             {title}
           </h3>
@@ -72,14 +72,13 @@ const ProductCard = ({id, title, price, rating, media, originalPrice }) => {
       </div>
       <div className="px-4 ">
         <div className="flex justify-between gap-2">
-          
-            <button
-              onClick={handleBuyNow}
-              className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold transition-all duration-300 hover:bg-blue-700 focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
-            >
-              Buy Now
-            </button>
-         
+          <button
+            onClick={handleBuyNow}
+            className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold transition-all duration-300 hover:bg-blue-700 focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
+          >
+            Buy Now
+          </button>
+
           <button
             onClick={handleAddToCart}
             className="bg-gray-100 text-gray-600 p-2 rounded-lg transition-all duration-300 hover:bg-gray-200 focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"

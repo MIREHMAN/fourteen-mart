@@ -22,25 +22,25 @@ const images = [
   },
 ];
 
-const ProductImages = () => {
+const ProductImages = ({media}) => {
   const [index, setIndex] = React.useState(0);
 
   return (
     <div className="flex flex-col gap-8">
       <div className="h-[500px] relative">
         <Image
-          src={images[index].url}
+          src={media[index].url}
           alt=""
           fill
           sizes="50vw"
-          className="object-cover rounded-md"
+          className="object-contain rounded-md"
         />
       </div>
       <div className="flex justify-between gap-4">
-        {images.map((image, i) => (
+        {media.map((image, i) => (
           <div
             className="w-1/4 h-32 relative gap-4 cursor-pointer"
-            key={image.id}
+            key={image.index}
             onClick={() => setIndex(i)}
           >
             <Image

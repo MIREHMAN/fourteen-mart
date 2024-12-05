@@ -1,51 +1,33 @@
+
 import React from 'react';
+import { ProductsData } from '../../data/ProductsData';
 import Add from "../../components/Add/Add";
 import CustomizeProducts from "../../components/CustomizeProducts/CustomizeProducts";
 import ProductImages from "../../components/ProductImages/ProductImages";
 import Reviews from "../../components/Reviews/Reviews";
 
-const product = {
-  name: "Product Name",
-  description: "Product Description",
-  media: {
-    items: [
-      {
-        url: "https://via.placeholder.com/500",
-      },
-    ],
-  },
-  price: {
-    price: 400,
-  },
-  options: [
-    {
-      name: "Color",
-      choices: ["Red", "Blue", "Green"],
-    },
-    {
-      name: "Size",
-      choices: ["Small", "Medium", "Large"],
-    },
-  ],
-};
 
+const SinglePage = async ({ params }) => {
+  const id = params.id;
+  console.log(id);
 
-const SinglePage = () => {
+  const product = ProductsData.find((product) => product.id === parseInt(id));
+  console.log(product);
   return (
     <div className="container mx-auto p-4 md:p-8 lg:p-16 xl:p-32 2xl:p-64 relative flex flex-col lg:flex-row gap-16">
       {/* Product Images */}
       <div className="w-full lg:w-1/2 lg:sticky top-20 h-max">
-        <ProductImages items={product.media?.items} />
+        <ProductImages media ={product.media.items} />
       </div>
       {/* Product Details */}
       <div className="w-full lg:w-1/2 flex flex-col gap-6">
-        <h1 className="text-4xl font-medium">{product.name}</h1>
-        <p className="text-gray-500">{product.description}</p>
+        <h1 className="text-4xl font-medium">{product.title}</h1>
+        <p className="text-gray-500">Description: {product.description}</p>
         <div className="h-[2px] bg-gray-100" />
         {/* Price */}
         <div className="flex items-center gap-4">
-          <h3 className="text-xl text-gray-500 line-through">$500</h3>
-          <h2 className="font-medium text-2xl">$400</h2>
+          <h3 className="text-xl text-gray-500 line-through">${product.originalPrice}</h3>
+          <h2 className="font-medium text-2xl">${product.price}</h2>
         </div>
         <div className="h-[2px] bg-gray-100" />
         {/* Options */}
