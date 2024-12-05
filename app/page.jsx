@@ -3,6 +3,7 @@ import OfferCard from "./components/OfferCard/OfferCard";
 import ProductsList from "./sections/ProductsList/ProductsList";
 import CategoryList from "./sections/CategoryList/CategoryList";
 import HotProductList from "./sections/HotProductList/HotProductList";
+import { title } from "process";
 
 function Home() {
   const images = [
@@ -10,16 +11,25 @@ function Home() {
       id: 1,
       url: "/cover.jpg",
       alt: "Banner 1",
+      title:"Explore New Trends",
+      description:'This is demo description',
+      ctaText:"Shop Now"
     },
     {
       id: 2,
       url: "/cover1.jpg",
       alt: "Banner 2",
+      title:"Explore New Trends",
+      description:'This is demo description',
+      ctaText:"Shop Now"
     },
     {
       id: 3,
       url: "/cover2.jpg",
       alt: "Banner 3",
+      title:"Explore New Trends",
+      description:'This is demo description',
+      ctaText:"Shop Now"
     },
   ];
 
