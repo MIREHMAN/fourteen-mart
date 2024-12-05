@@ -19,7 +19,7 @@ function Home() {
       id: 2,
       url: "/cover1.jpg",
       alt: "Banner 2",
-      title:"Explore New Trends",
+      title:"Explore New Jackets",
       description:'This is demo description',
       ctaText:"Shop Now"
     },
@@ -27,7 +27,7 @@ function Home() {
       id: 3,
       url: "/cover2.jpg",
       alt: "Banner 3",
-      title:"Explore New Trends",
+      title:"Explore New Trendy Watches",
       description:'This is demo description',
       ctaText:"Shop Now"
     },
