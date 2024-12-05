@@ -10,7 +10,7 @@ import {
   AiOutlineHeart,
 } from "react-icons/ai";
 
-const ProductCard = ({id, title, price, rating, image, originalPrice }) => {
+const ProductCard = ({id, title, price, rating, media, originalPrice }) => {
   const { addToCart } = useCart();
   const router = useRouter();
 
@@ -27,7 +27,7 @@ const ProductCard = ({id, title, price, rating, image, originalPrice }) => {
     <div className="bg-white shadow-lg rounded-xl w-64 h-[400px] overflow-hidden transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 cursor-pointer">
       <div className="relative">
         <Image
-          src={image}
+          src={media.items[0].url}
           alt={title}
           width={256}
           height={160}

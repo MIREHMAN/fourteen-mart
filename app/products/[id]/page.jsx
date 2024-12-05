@@ -29,16 +29,6 @@ const product = {
   ],
 };
 
-const sections = [
-  {
-    title: "Section 1",
-    description: "Section 1 description",
-  },
-  {
-    title: "Section 2",
-    description: "Section 2 description",
-  },
-];
 
 const SinglePage = () => {
   return (
@@ -73,13 +63,7 @@ const SinglePage = () => {
         <CustomizeProducts />
         <div className="h-[2px] bg-gray-100" />
         <Add/>
-        {/* Additional Info */}
-        {sections.map((section) => (
-          <div className="text-sm" key={section.title}>
-            <h4 className="font-medium mb-4">{section.title}</h4>
-            <p>{section.description}</p>
-          </div>
-        ))}
+       
         <div className="h-[2px] bg-gray-100" />
         {/* Reviews */}
         <h1 className="text-2xl">User Reviews</h1>
