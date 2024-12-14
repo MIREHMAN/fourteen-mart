@@ -2,7 +2,6 @@
 import React from 'react';
 import { ProductsData } from '../../data/ProductsData';
 import Add from "../../components/Add/Add";
-import CustomizeProducts from "../../components/CustomizeProducts/CustomizeProducts";
 import ProductImages from "../../components/ProductImages/ProductImages";
 import Reviews from "../../components/Reviews/Reviews";
 

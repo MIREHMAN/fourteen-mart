@@ -7,6 +7,8 @@ import  HotProductsCard  from './HotProductsCard';
 
 
 export default function HotSalesCarousel({ products }) {
+
+  
 const [scrollPosition, setScrollPosition] = useState(0);
 const containerRef = useRef(null);
 
@@ -22,7 +24,6 @@ useEffect(() => {
   
   const animate = (currentTime) => {
     if (!lastTime) lastTime = currentTime;
-    const delta = currentTime - lastTime;
     
     setScrollPosition((prevPosition) => {
       const newPosition = (prevPosition + speed) % (scrollWidth - clientWidth);

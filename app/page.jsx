@@ -3,7 +3,6 @@ import OfferCard from "./components/OfferCard/OfferCard";
 import ProductsList from "./sections/ProductsList/ProductsList";
 import CategoryList from "./sections/CategoryList/CategoryList";
 import HotProductList from "./sections/HotProductList/HotProductList";
-import { title } from "process";
 
 function Home() {
   const images = [
