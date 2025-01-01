@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 const products = [
   {
@@ -163,6 +164,7 @@ export default function ProductsPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <Breadcrumbs />
       <h1 className="text-3xl font-bold mb-8">All Products</h1>
 
       <div className="flex flex-col lg:flex-row gap-8">
@@ -194,10 +196,7 @@ export default function ProductsPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                {...product}
-              />
+              <ProductCard key={product.id} {...product} />
             ))}
           </div>
 
