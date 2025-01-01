@@ -2,11 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Star, ShoppingCart, Heart } from "lucide-react";
+import { Star, Heart, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { useCart } from "@/contexts/CartContext";
+import { toast } from "@/hooks/use-toast";
 
 interface ProductCardProps {
-  id: string | number;
+  id: string|number;
   title: string;
   price: number;
   rating: number;
@@ -22,6 +25,28 @@ export function ProductCard({
   media,
   originalPrice,
 }: ProductCardProps) {
+  const { addToCart, buyNow } = useCart();
+  const router = useRouter();
+
+  const handleAddToCart = () => {
+    addToCart({
+      id,
+      name: title,
+      price,
+      quantity: 1,
+      image: media.items[0].url,
+    });
+    toast({
+      title: "Added to Cart",
+      description: `${title} has been added to your cart.`,
+    });
+  };
+
+  const handleBuyNow = () => {
+    buyNow({ id, name: title, price, quantity: 1, image: media.items[0].url });
+    router.push("/checkout");
+  };
+
   return (
     <div className="bg-card text-card-foreground shadow-lg rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 flex flex-col h-full">
       <div className="relative">
@@ -73,10 +98,13 @@ export function ProductCard({
       </div>
       <div className="px-4 pb-4 mt-auto">
         <div className="flex justify-between gap-2">
-          <Button  className="flex-grow text-xs sm:text-sm">
+          <Button
+            onClick={handleBuyNow}
+            className="flex-grow text-xs sm:text-sm"
+          >
             Buy Now
           </Button>
-          <Button variant="outline" size="icon" >
+          <Button variant="outline" size="icon" onClick={handleAddToCart}>
             <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5" />
           </Button>
         </div>

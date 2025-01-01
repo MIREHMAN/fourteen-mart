@@ -160,15 +160,6 @@ export default function ProductsPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("");
 
-  const handleAddToCart = (productId: string) => {
-    console.log(`Added product ${productId} to cart`);
-    // Implement add to cart logic here
-  };
-
-  const handleBuyNow = (productId: string) => {
-    console.log(`Buying product ${productId}`);
-    // Implement buy now logic here
-  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -206,8 +197,6 @@ export default function ProductsPage() {
               <ProductCard
                 key={product.id}
                 {...product}
-                onAddToCart={() => handleAddToCart(product.id)}
-                onBuyNow={() => handleBuyNow(product.id)}
               />
             ))}
           </div>

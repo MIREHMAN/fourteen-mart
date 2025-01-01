@@ -1,11 +1,9 @@
-"use client"
-
 import Image from "next/image";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface FlashSaleProductCardProps {
-  id: string;
+  id: string|number;
   title: string;
   price: number;
   originalPrice: number;
@@ -15,6 +13,7 @@ interface FlashSaleProductCardProps {
 }
 
 export function FlashSaleProductCard({
+  id,
   title,
   price,
   originalPrice,

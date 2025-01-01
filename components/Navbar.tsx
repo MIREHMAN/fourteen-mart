@@ -1,24 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Menu, Search, ShoppingCart, Sun, Moon } from "lucide-react";
+import { Menu, Search, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
+
+import { CartSheet } from "./CartSheet";
+import { useCart } from "@/contexts/CartContext";
+import { CartDropdown } from "./CartDropDown";
+
 
 const pages = ["Home", "Products", "Stores", "About", "Login"];
 
 export function Navbar() {
   const { theme, setTheme } = useTheme();
-  const [cartItems, setCartItems] = useState(2); // Example cart items count
+  const { cart } = useCart();
+  const cartItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <nav className="bg-background border-b">
@@ -58,30 +57,9 @@ export function Navbar() {
                   <Search className="h-5 w-5 text-muted-foreground" />
                 </div>
               </div>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="ml-3 relative">
-                    <ShoppingCart className="h-6 w-6" />
-                    {cartItems > 0 && (
-                      <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">
-                        {cartItems}
-                      </span>
-                    )}
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56">
-                  <DropdownMenuItem>
-                    <Link href="/cart" className="flex w-full">
-                      View Cart
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <Link href="/checkout" className="flex w-full">
-                      Checkout
-                    </Link>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <div className="ml-3">
+                <CartDropdown count={cartItemsCount} />
+              </div>
               <Button
                 variant="ghost"
                 size="icon"
@@ -96,10 +74,11 @@ export function Navbar() {
               </Button>
             </div>
           </div>
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center">
+            <CartSheet count={cartItemsCount} />
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" className="ml-2">
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
@@ -129,9 +108,6 @@ export function Navbar() {
                     </div>
                   </div>
                   <div className="flex justify-between mt-4">
-                    <Button variant="ghost" size="icon">
-                      <ShoppingCart className="h-6 w-6" />
-                    </Button>
                     <Button
                       variant="ghost"
                       size="icon"
