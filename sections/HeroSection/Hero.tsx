@@ -5,20 +5,26 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-interface CarouselItem {
-  id: number;
-  url: string;
-  alt: string;
-  title: string;
-  description: string;
-  ctaText: string;
-}
+const items = [
+  {
+    id: 1,
+    url: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    alt: "Hero Image 1",
+    title: "Welcome to FourteenMart",
+    description: "Discover amazing products at unbeatable prices",
+    ctaText: "Shop Now",
+  },
+  {
+    id: 2,
+    url: "https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    alt: "Hero Image 2",
+    title: "New Arrivals",
+    description: "Check out our latest collection",
+    ctaText: "Explore",
+  },
+];
 
-interface HeroProps {
-  items: CarouselItem[];
-}
-
-export function Hero({ items }: HeroProps) {
+export function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -26,7 +32,7 @@ export function Hero({ items }: HeroProps) {
       setActiveIndex((prevIndex) => (prevIndex + 1) % items.length);
     }, 5000);
     return () => clearInterval(intervalId);
-  }, [items]);
+  }, []);
 
   const handlePrevClick = () => {
     setActiveIndex(

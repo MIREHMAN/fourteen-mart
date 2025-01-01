@@ -6,14 +6,12 @@ import { Star, ShoppingCart, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface ProductCardProps {
-  id: string;
+  id: string | number;
   title: string;
   price: number;
   rating: number;
   media: { items: { url: string }[] };
   originalPrice: number;
-  onAddToCart: () => void;
-  onBuyNow: () => void;
 }
 
 export function ProductCard({
@@ -23,8 +21,6 @@ export function ProductCard({
   rating,
   media,
   originalPrice,
-  onAddToCart,
-  onBuyNow,
 }: ProductCardProps) {
   return (
     <div className="bg-card text-card-foreground shadow-lg rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 flex flex-col h-full">
@@ -34,7 +30,7 @@ export function ProductCard({
           alt={title}
           width={256}
           height={160}
-          className="w-full h-40 object-cover"
+          className="w-full h-40 object-contain"
         />
         <div className="absolute top-2 left-2">
           <span className="text-xs font-semibold text-white rounded-full bg-red-500 px-2 py-1 shadow-md">
@@ -77,10 +73,10 @@ export function ProductCard({
       </div>
       <div className="px-4 pb-4 mt-auto">
         <div className="flex justify-between gap-2">
-          <Button onClick={onBuyNow} className="flex-grow text-xs sm:text-sm">
+          <Button  className="flex-grow text-xs sm:text-sm">
             Buy Now
           </Button>
-          <Button variant="outline" size="icon" onClick={onAddToCart}>
+          <Button variant="outline" size="icon" >
             <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5" />
           </Button>
         </div>
