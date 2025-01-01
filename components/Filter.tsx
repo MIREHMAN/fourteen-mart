@@ -1,6 +1,6 @@
 "use client";
+import { Label } from "@radix-ui/react-dropdown-menu";
 import React, { useState } from "react";
-import { Button, Select, Label, Form } from "@shadcn/ui";
 
 const Filter = () => {
   const [category, setCategory] = useState("");
@@ -26,7 +26,7 @@ const Filter = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="bg-gray-100 p-4 rounded-lg">
+    <form onSubmit={handleSubmit} className="bg-gray-100 p-4 rounded-lg">
       <div className="flex gap-4">
         <div>
           <Label className="text-lg font-bold mb-2">Category:</Label>
