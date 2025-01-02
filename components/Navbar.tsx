@@ -10,13 +10,15 @@ import { useTheme } from "next-themes";
 import { CartSheet } from "./CartSheet";
 import { useCart } from "@/contexts/CartContext";
 import { CartDropdown } from "./CartDropDown";
+import { usePathname } from "next/navigation";
 
 
-const pages = ["Home", "Products", "Stores", "About", "Login"];
+const pages = ["Home", "Products", "Stores", "About"];
 
 export function Navbar() {
   const { theme, setTheme } = useTheme();
   const { cart } = useCart();
+  const pathname = usePathname();
   const cartItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
@@ -38,7 +40,11 @@ export function Navbar() {
                       ? "/"
                       : `/${page.toLowerCase()}`
                   }
-                  className="text-foreground hover:bg-accent hover:text-accent-foreground px-3 py-2 rounded-md text-sm font-medium"
+                  className={`text-foreground hover:bg-accent ${
+                    pathname === `/${page.toLocaleLowerCase()}`
+                      ? "bg-accent"
+                      : ""
+                  }  hover:text-accent-foreground px-3 py-2 rounded-md text-sm font-medium`}
                 >
                   {page}
                 </Link>
@@ -61,7 +67,7 @@ export function Navbar() {
                 <CartDropdown count={cartItemsCount} />
               </div>
               <Button
-                variant="ghost"
+                variant="outline"
                 size="icon"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 className="ml-3"
@@ -71,6 +77,9 @@ export function Navbar() {
                 ) : (
                   <Moon className="h-6 w-6" />
                 )}
+              </Button>
+              <Button variant="outline" className="ml-3 px-8">
+                <Link href={"/login"}>Log in</Link>
               </Button>
             </div>
           </div>
