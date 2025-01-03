@@ -12,9 +12,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 export function CartDropdown({ count }: { count: number }) {
-  const { cart, removeFromCart, updateQuantity } = useCart();
+  const { cart, updateQuantity } = useCart();
 
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   const subtotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0

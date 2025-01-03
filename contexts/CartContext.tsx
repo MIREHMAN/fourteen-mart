@@ -13,8 +13,8 @@ interface CartItem {
 interface CartContextType {
   cart: CartItem[];
   addToCart: (item: CartItem) => void;
-  removeFromCart: (id: string) => void;
-  updateQuantity: (id: string, quantity: number) => void;
+  removeFromCart: (id: string | number) => void;
+  updateQuantity: (id: string | number, quantity: number) => void;
   clearCart: () => void;
   buyNow: (item: CartItem) => void;
 }
@@ -59,11 +59,11 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     });
   };
 
-  const removeFromCart = (id: string) => {
+  const removeFromCart = (id: string|number) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
-  const updateQuantity = (id: string, quantity: number) => {
+  const updateQuantity = (id: string|number, quantity: number) => {
     setCart((prevCart) =>
       prevCart
         .map((item) =>

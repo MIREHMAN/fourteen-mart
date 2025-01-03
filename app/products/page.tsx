@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { FilterSheet } from "@/components/FilterSheet";
 
 const products = [
   {
@@ -163,16 +164,18 @@ export default function ProductsPage() {
 
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <Breadcrumbs />
-      <h1 className="text-3xl font-bold mb-8">All Products</h1>
-
-      <div className="flex flex-col lg:flex-row gap-8">
-        <aside className="lg:w-64">
-          <FiltersSideMenu />
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-12">
+      <div className="flex justify-between w-full "></div>
+      <div className="flex flex-col lg:flex-row gap-8 ">
+        <aside className="lg:w-64 hidden md:block ">
+          <div className="md:fixed top-30 z-50">
+            <Breadcrumbs />
+            <FiltersSideMenu />
+          </div>
         </aside>
 
         <div className="flex-1">
+          <h1 className="text-3xl font-bold mb-8">All Products</h1>
           <div className="flex flex-col md:flex-row justify-between mb-8">
             <div className="flex-1 mb-4 md:mb-0 md:mr-4">
               <Input
@@ -182,16 +185,21 @@ export default function ProductsPage() {
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
-            <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Sort by" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="price-asc">Price: Low to High</SelectItem>
-                <SelectItem value="price-desc">Price: High to Low</SelectItem>
-                <SelectItem value="rating">Rating</SelectItem>
-              </SelectContent>
-            </Select>
+            <div className="flex justify-between">
+              <Select value={sortBy} onValueChange={setSortBy}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Sort by" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="price-asc">Price: Low to High</SelectItem>
+                  <SelectItem value="price-desc">Price: High to Low</SelectItem>
+                  <SelectItem value="rating">Rating</SelectItem>
+                </SelectContent>
+              </Select>
+              <div className="md:hidden">
+                <FilterSheet />
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
