@@ -113,7 +113,7 @@ export default function CheckoutPage() {
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="paypal" id="paypal" />
-              <Label htmlFor="paypal">PayPal</Label>
+              <Label htmlFor="paypal">Cash on Delivery</Label>
             </div>
           </RadioGroup>
           {paymentMethod === "credit_card" && (
