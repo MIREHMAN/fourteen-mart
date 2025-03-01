@@ -8,7 +8,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Checkbox } from "@radix-ui/react-checkbox";
-import { Label } from "@radix-ui/react-dropdown-menu";
+// import { Label } from "@radix-ui/react-dropdown-menu";
 import { Slider } from "@radix-ui/react-slider";
 import { Filter } from "lucide-react";
 import { useState } from "react";
@@ -94,12 +94,12 @@ export function FilterSheet() {
                   checked={selectedCategories.includes(category)}
                   onCheckedChange={() => handleCategoryChange(category)}
                 />
-                <Label
+                {/* <Label
                   htmlFor={`category-${category}`}
                   className="ml-2 text-sm"
                 >
                   {category}
-                </Label>
+                </Label> */}
               </div>
             ))}
           </div>
@@ -113,9 +113,9 @@ export function FilterSheet() {
                   checked={selectedBrands.includes(brand)}
                   onCheckedChange={() => handleBrandChange(brand)}
                 />
-                <Label htmlFor={`brand-${brand}`} className="ml-2 text-sm">
+                {/* <Label htmlFor={`brand-${brand}`} className="ml-2 text-sm">
                   {brand}
-                </Label>
+                </Label> */}
               </div>
             ))}
           </div>
