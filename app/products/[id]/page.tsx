@@ -49,11 +49,7 @@ const product = {
   },
 };
 
-export default function ProductDetailPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default function ProductDetailPage() {
   const { addToCart, buyNow } = useCart();
   const router = useRouter();
   const [selectedOptions, setSelectedOptions] = useState({});
