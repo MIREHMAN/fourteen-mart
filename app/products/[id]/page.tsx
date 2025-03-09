@@ -12,7 +12,44 @@ import { toast } from "@/hooks/use-toast";
 import Reviews from "@/components/Reviews";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
-const product = {
+// Define interfaces for type safety
+interface MediaItem {
+  url: string;
+  index: number; // Changed from id to index to match ProductImages component
+}
+
+
+
+interface StoreInfo {
+  name: string;
+  rating: number;
+  products: number;
+}
+
+interface Product {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  rating: number;
+  reviews: number;
+  media: MediaItem[];
+  originalPrice: number;
+  features: string[];
+  storeInfo: StoreInfo;
+}
+
+interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  image: string;
+  
+}
+
+// Convert the product data to match our interfaces
+const product: Product = {
   id: "1",
   title: "Wireless Bluetooth Earbuds",
   description:
@@ -22,15 +59,15 @@ const product = {
   reviews: 120,
   media: [
     {
-      id: 1,
+      index: 1, // Changed from id to index
       url: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     },
     {
-      id: 2,
+      index: 2, // Changed from id to index
       url: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     },
     {
-      id: 3,
+      index: 3, // Changed from id to index
       url: "https://images.unsplash.com/photo-1484704849700-f032a568e944?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     },
   ],
@@ -52,32 +89,39 @@ const product = {
 export default function ProductDetailPage() {
   const { addToCart, buyNow } = useCart();
   const router = useRouter();
-  const [selectedOptions, setSelectedOptions] = useState({});
+  const [selectedOptions, setSelectedOptions] = useState<
+    Record<string, string>
+  >({});
 
-  const handleAddToCart = (quantity: number) => {
-    addToCart({
+  const handleAddToCart = (quantity: number): void => {
+    const cartItem: CartItem = {
       id: product.id,
       name: product.title,
       price: product.price,
       quantity: quantity,
       image: product.media[0].url,
       ...selectedOptions,
-    });
+    };
+
+    addToCart(cartItem);
+
     toast({
       title: "Added to Cart",
       description: `${product.title} has been added to your cart.`,
     });
   };
 
-  const handleBuyNow = (quantity: number) => {
-    buyNow({
+  const handleBuyNow = (quantity: number): void => {
+    const cartItem: CartItem = {
       id: product.id,
       name: product.title,
       price: product.price,
       quantity: quantity,
       image: product.media[0].url,
       ...selectedOptions,
-    });
+    };
+
+    buyNow(cartItem);
     router.push("/checkout");
   };
 
@@ -119,7 +163,7 @@ export default function ProductDetailPage() {
               { name: "Color", choices: ["Red", "Blue", "Green"] },
               { name: "Size", choices: ["Small", "Medium", "Large"] },
             ]}
-            onOptionSelect={(name, value) =>
+            onOptionSelect={(name: string, value: string) =>
               setSelectedOptions((prev) => ({ ...prev, [name]: value }))
             }
           />
